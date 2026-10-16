@@ -1,0 +1,8 @@
+# Archivos de trabajo locales: no forman parte de la web publicada
+.claude/
+serve.ps1
+*.csv
+*.sql
+.htaccess
+logo-edumep-original.png
+imagenes/categorias/LEEME.txt
