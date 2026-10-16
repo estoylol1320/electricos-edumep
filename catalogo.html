@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Seguridad: el navegador solo carga código/datos de esta web, Google Fonts y el Supabase de EDUMEP -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://bidkkdggtnlyokjcpcvf.supabase.co; object-src 'none'; base-uri 'self'; form-action 'none'">
 <title>EDUMEP SAS — Materiales Eléctricos e Iluminación LED</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -659,12 +661,11 @@
 
 <script type="module">
 /* =========================================================
-   SUPABASE — Cliente oficial (ESM). Credenciales del proyecto.
+   SUPABASE — lectura directa por la API REST (sin librerías
+   externas). La llave "anon" es pública y solo permite leer.
    ========================================================= */
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 const SUPABASE_URL = "https://bidkkdggtnlyokjcpcvf.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpZGtrZGdndG5seW9ramNwY3ZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3OTY4MjQsImV4cCI6MjA5NzM3MjgyNH0.FTqGzK2BibRuZD9k6wzgF-GwxfIR4hJDow9927V3Nok";
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* WhatsApp para el checkout: 57 (Colombia) + número, sin signos */
 const WHATSAPP_NUMBER = "573203461513";
@@ -1078,7 +1079,7 @@ document.getElementById("checkoutBtn").onclick=()=>{
    lines.push('');
  });
  const text=encodeURIComponent(lines.join("\n"));
- window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`,"_blank");
+ window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`,"_blank","noopener");
 };
 document.getElementById("demoSend").onclick=()=>{
  const nom=document.getElementById("cfName").value.trim();
@@ -1090,7 +1091,7 @@ document.getElementById("demoSend").onclick=()=>{
  if(con)lines.push("• Contacto: "+con);
  if(msg)lines.push("• Mensaje: "+msg);
  const text=encodeURIComponent(lines.join("\n"));
- window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`,"_blank");
+ window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`,"_blank","noopener");
 };
 
 /* ===== detalle de producto + relacionados ===== */
@@ -1196,8 +1197,9 @@ async function loadProducts(){
  moreBtn.style.display="none";
  countPill.textContent="Cargando…";
  try{
-   const { data, error } = await supabase.from('productos').select('*').order('id',{ascending:true});
-   if(error) throw error;
+   const res = await fetch(`${SUPABASE_URL}/rest/v1/productos?select=*&order=id.asc`,{headers:{apikey:SUPABASE_ANON_KEY,Authorization:`Bearer ${SUPABASE_ANON_KEY}`}});
+   if(!res.ok) throw new Error(`Supabase respondió ${res.status}`);
+   const data = await res.json();
    PRODUCTS=(data||[]).map(mapRow).filter(p=>p.n);
    dedupeSlugs(PRODUCTS);
    updateStats();
