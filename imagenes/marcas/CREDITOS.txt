@@ -1,0 +1,13 @@
+﻿Logos de marcas — sección "Marcas con las que trabajamos" (catalogo.html)
+Las marcas y logotipos pertenecen a sus respectivos dueños; se usan solo para indicar las marcas que vende EDUMEP SAS.
+
+schneider-electric.svg  Wikimedia Commons, File:Schneider Electric 2007.svg — dominio público
+legrand.svg             Wikimedia Commons, File:Logo Legrand SA.svg — dominio público
+philips.svg             Wikimedia Commons, File:Philips logo new.svg — dominio público
+3m.svg                  Wikimedia Commons, File:3M wordmark.svg — dominio público
+chint.png               Wikimedia Commons, File:Chint logo.png — dominio público
+sylvania.png            Wikimedia Commons, File:Sylvania logo.png — CC BY-SA 3.0 (crédito visible en la página)
+centelsa.png            Recorte de la foto del aviso de la tienda EDUMEP
+procables.png           Recorte de la foto del aviso de la tienda EDUMEP
+
+Si consigues el logo oficial de Centelsa o Procables, reemplaza el archivo con el mismo nombre.
