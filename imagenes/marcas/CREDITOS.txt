@@ -9,5 +9,8 @@ chint.png               Wikimedia Commons, File:Chint logo.png — dominio públ
 sylvania.png            Wikimedia Commons, File:Sylvania logo.png — CC BY-SA 3.0 (crédito visible en la página)
 centelsa.png            Recorte de la foto del aviso de la tienda EDUMEP
 procables.png           Recorte de la foto del aviso de la tienda EDUMEP
+inter-light.jpg         Logo que EDUMEP ya usaba en la versión anterior del catálogo
+lexmana.png             Logo que EDUMEP ya usaba en la versión anterior del catálogo
+napoli.png              Logo enviado por EDUMEP
 
 Si consigues el logo oficial de Centelsa o Procables, reemplaza el archivo con el mismo nombre.
